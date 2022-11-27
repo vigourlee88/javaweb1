@@ -1,6 +1,9 @@
 package com.itheima.request.demo1;
 
 import java.io.IOException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -19,10 +22,18 @@ public class RequestDemo3 extends HttpServlet {
 		//request.setCharacterEncoding("UTF-8");
 		/**
 		 *产生乱码的原因 
+		 *GET方式提交的数据在请求行URL后面，在地址栏上其实就已经进行了一次URL编码了
+		 *解决方案
+		 *将存入到request缓冲区中的值以ISO-8859-1的方式获取到，以UTF-8方式进行解码
 		 * 
 		 */
 		String name = request.getParameter("name");
-		System.out.println("姓名:"+name);
+		//String encode = URLEncoder.encode(name,"ISO-8859-1");
+		//String decode = URLDecoder.decode(encode,"UTF-8");
+		//System.out.println("姓名:"+decode);
+	    //System.out.println("姓名:"+name);
+		String value = new String(name.getBytes(),"UTF-8");
+		System.out.println("姓名:"+value);
  
 	}
 
