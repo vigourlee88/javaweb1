@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>基本过滤选择器</title>
+<script type="text/javascript" src="js/jquery-3.6.2.js"></script>
+<script type="text/javascript">
+   $(function(){
+	   //1.设置表格第一行，显示为红色
+	   $("tr:first").css("color","red");
+	   
+	   //2.设置表格除第一行以外，显示为蓝色
+	   //$("tr:not(tr:first)").css("color","blue");
+	   //$("tr:gt(0)").css("color","blue");
+	   
+	   //3.设置表格的奇数行和偶数行颜色不一样，例如，偶数行设置为红色，奇数行设置为蓝色
+       //$("tr:odd").css("color","red");
+       //$("tr:even").css("color","blue");
+   
+       //4.设置页面的标题为灰色
+       //$(":header").css("color","gray");
+       
+   
+   
+   });
+
+
+</script>
+</head>
+<body>
+     <h1>商品信息</h1>
+     <table border="1">
+       <tr>
+          <td>商品编号</td>
+          <td>商品名称</td>
+          <td>价格</td>
+          <td>数量</td>
+       </tr>
+       <tr>
+          <td>001</td>
+          <td>电视机</td>
+          <td>2100</td>
+          <td>100</td>
+       </tr>
+     </table>
+
+</body>
+</html>

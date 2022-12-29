@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>基本选择器</title>
+<script type="text/javascript" src="js/jquery-3.6.2.js"></script>
+
+<script type="text/javascript">
+//要先页面加载后 内容
+$(function(){
+	//1.得到id=d1 的元素中的内容显示出
+	var html = $("#d1").html();
+	//alert(html);//html方法得到div的id=d1元素中的所有html
+	var text = $("#d1").text();//text方法得到div的id=d1元素中的所有文本
+	//alert(text);
+	
+	//2.将class=d元素中的内容后面添加欢迎你 each遍历
+	$(".d").each(function(i){
+		//alert(i);
+		//this它是一个dom对象 我们要调用jQuery的方法，应该将其转换为jQuery对象,设置值
+		//alert($(this).html());
+		$(this).html($(this).html()+" 欢迎你");
+	});
+	//3.得到id=d1这个div在整个页面上是第几个
+	//3.1得到所有的div
+	//3.2得到id=d1这个div
+	var index=$("div").index($("#d1"));
+	//alert(index);//判断id=d1元素在所有的div中的索引值，从0开始
+    //4.得到class=d的元素有几个
+    //var size= $(".d").size();
+	//alert(size);
+	
+	//5.将所有的class=d1或id=d1元素中的内容设置为Java
+    $(".d,#d1").html("java");
+
+}); 
+
+</script>
+</head>
+<body>
+  <div id="d1"><a class="d">itcast</a></div>
+  <div class="d">itcast</div>
+  <div class="d">itheima</div>
+  <div>itheima</div>
+  <div>itheima</div>
+</body>
+</html>

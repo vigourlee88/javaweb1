@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript" src="js/jquery-3.6.2.js"></script>
+
+<script type="text/javascript">
+     //页面加载完成后，加载函数，会覆盖前面的
+    // window.onload=function(){
+    //	 alert("hello 1");
+    // }
+     
+     // window.onload=function(){
+    //	 alert("hello 2");
+    // }
+     
+     //使用jquery完成操作,允许多次绑定
+     //$(function(){
+     // alert("hello jquery1");
+     // });
+     
+     //$(function(){
+     //	 alert("hello jquery2");
+     //});
+     
+     //最完整的写法
+     jQuery(document).ready(function(){
+    	 alert("hello jquery1");
+     });
+     //简写1
+     $(document).ready(function(){
+    	 alert("hello jquery2");
+     });
+     //简写2
+     jQuery(function(){
+    	 alert("hello jquery3");
+     });
+     //简写3
+     $(function(){
+    	 alert("hello jquery4");
+     });
+</script>
+   
+</head>
+<body>
+
+</body>
+</html>

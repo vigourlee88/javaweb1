@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>dom对象与jquery对象转换</title>
+<script type="text/javascript" src="js/jquery-3.6.2.js"></script>
+
+<script type="text/javascript">
+//要先页面加载后 内容
+$(function(){
+	//得到div的dom对象
+    var div = document.getElementById("d");
+    //div.innerHTML="";
+	
+	
+	 //得到一个jQuery对象
+	 var jqueryDiv = $("#d");
+	 //jqueryDiv.html();
+	 
+	 
+	 //转换dom换成jquery
+	 //$(div).html("hello jquery");
+	 
+	//转换jquery换成dom
+	jqueryDiv.get(0).innerHTML="hello jquery....";
+	
+}); 
+
+</script>
+</head>
+<body>
+  <div id="d"></div>
+</body>
+</html>
