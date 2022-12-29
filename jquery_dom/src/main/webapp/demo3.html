@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>文件操作-替换与克隆</title>
+<script type="text/javascript" src="js/jquery-3.6.2.js"></script>
+<script type="text/javascript">
+       $(function(){
+    	 //将id=d1中的第一个P来克隆一份来替换id=d2的div中的第二个span
+         //1.得到div的id=d1的第一个p的克隆
+         $("#d1 p:first").click(function(){alert("pppp");});//给p注册事件
+         $("a").mouseover(function(){alert("aaaa");});//给超链接添加了mousemover事件
+         var cp = $("#d1 p:first").clone(false,true);
+         //var cp = $("#d1 p:first").clone();
+    	 //clone第一个参数为true，代表它的事件也会被克隆，为false不会克隆事件
+    	 //clone第二个参数为true，代表子元素的a事件也被克隆，
+    	 //为false代表子元素a的事件不被克隆（注意父元素p的事件克隆要为true）
+    	 
+    	 //2.将到id=d2的div中第二个span使用cp替换
+    	 
+    	 //$("#d2 span:last").replaceWith(cp);
+    	 cp.replaceAll($("#d2 span:last"));
+       });
+
+
+</script>
+</head>
+<body>
+     <div id="d1">
+       <p>
+         <a>p1</a>
+       </p>
+       <p>p2</p>
+     </div>
+     <div id="d2">
+       <span>span1</span>
+       <span>span2</span>
+     </div>
+</body>
+</html>
