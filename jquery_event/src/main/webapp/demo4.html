@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jquery一次性事件</title>
+<script type="text/javascript" src="js/jquery-3.6.2.js"></script>
+<script type="text/javascript">
+
+   $(function(){
+	  //给按钮注册一个点击事件
+	  $("#btn").click(function(){
+		  alert("hello world");
+	  });
+	  //给按钮注册一个mouseover事件
+	  $("#btn").bind("mouseover",function(){
+		 // alert("btn mouse over");
+		 //trigger帮助事件触发，事件绑定的函数
+		 $(this).trigger("click");
+	  });
+	
+   });
+</script>
+</head>
+<body>
+  <input type="button" id="btn" value="按钮">
+</body>
+</html>

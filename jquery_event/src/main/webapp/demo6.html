@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jquery事件切换-toggle</title>
+<script type="text/javascript" src="js/jquery-3.6.2.js"></script>
+<script type="text/javascript">
+
+   $(function(){
+	 $("img").toggle(function(){
+		 //alert(1);
+		 $(this).attr("src","2.png");
+	 },function(){
+		 //alert(2);
+		 $(this).attr("src","3.png");
+	 },function(){
+		 //alert(3);
+		 $(this).attr("src","1.png");
+	 });
+	 
+   }); 
+</script>
+</head>
+<body>
+  <img src='1.png' width="100" height="100">
+</body>
+</html>
