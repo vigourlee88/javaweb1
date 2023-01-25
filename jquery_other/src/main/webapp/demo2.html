@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>表单数据serializeArray方法</title>
+
+<script src="/jquery_other/js/jquery-3.6.2.js"></script>
+<script type="text/javascript">
+      
+      //页面加载完成后执行操作
+      $(function(){
+    	
+    	var msg = $("#f").serializeArray();//将表单信息序列化成json数据
+    	
+    	console.info(msg);//将信息打印到浏览器的控制台上
+      });
+</script>
+
+</head>
+<body>
+	<form id="f" action="#" method="post">
+	     username:<input type="text" name="username" value="tom"><br>
+	     password:<input type="password" name="password" value="123"><br>
+	     <input type="submit" value="login" >
+	</form>
+</body>
+</html>

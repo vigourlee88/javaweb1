@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>表单数据serialize方法</title>
+
+<script src="/jquery_other/js/jquery-3.6.2.js"></script>
+<script type="text/javascript">
+      
+      //页面加载完成后执行操作
+      $(function(){
+    	  var msg = $("#f").serialize();//将表单数据序列化成请求的参数name=value&password=value
+    	  alert(msg);
+      });
+</script>
+
+</head>
+<body>
+	<form id="f" action="#" method="post">
+	     username:<input type="text" name="username" value="tom"><br>
+	     password:<input type="password" name="password" value="123"><br>
+	     <input type="submit" value="login" >
+	</form>
+</body>
+</html>
