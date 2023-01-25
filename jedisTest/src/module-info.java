@@ -1,0 +1,3 @@
+module jedisTest {
+	requires jedis;
+}
