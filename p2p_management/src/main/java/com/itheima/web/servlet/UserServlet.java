@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.itheima.domain.User;
 import com.itheima.service.IUserService;
 import com.itheima.service.impl.UserServiceImpl;
+import com.itheima.utils.BeanFactory;
 
 
 public class UserServlet extends HttpServlet {
@@ -51,7 +52,12 @@ public class UserServlet extends HttpServlet {
     	//}
     	
     	//3.调用service完成登录操作
-    	IUserService userService= new UserServiceImpl();
+//    	IUserService userService= new UserServiceImpl();
+//      IUserService userService= BeanFactory.getUserService();
+    	String path=request.getSession().getServletContext().getRealPath("/WEB-INF/classes/bean.xml");
+    	
+        IUserService userService= (IUserService) BeanFactory.createBean("userService",path);
+    	
 	    User user = userService.login(username,password);
     
         //4.判断是否登录成功

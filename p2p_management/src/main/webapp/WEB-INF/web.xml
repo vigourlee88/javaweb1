@@ -46,4 +46,14 @@
     <servlet-name>ProductServlet</servlet-name>
     <url-pattern>/product</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CustomerServlet</display-name>
+    <servlet-name>CustomerServlet</servlet-name>
+    <servlet-class>com.itheima.web.servlet.CustomerServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CustomerServlet</servlet-name>
+    <url-pattern>/customer</url-pattern>
+  </servlet-mapping>
 </web-app>

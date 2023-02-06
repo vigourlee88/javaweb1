@@ -16,6 +16,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.itheima.domain.Product;
 import com.itheima.service.IProductService;
 import com.itheima.service.impl.ProductServiceImpl;
+import com.itheima.utils.RedisUtils;
 
 
 public class ProductServlet extends HttpServlet {
@@ -35,6 +36,7 @@ public class ProductServlet extends HttpServlet {
 		if("findById".equals(method)) {
 			findById(request,response);
 		}
+		
 		if("update".equals(method)) {
 			update(request,response);
 		}
@@ -50,17 +52,27 @@ public class ProductServlet extends HttpServlet {
 		//将ps转换成json响应到浏览器
 		String json=JSONObject.toJSONString(ps);
 		
-		response.getWriter().write(json);
+		//判断是否是跨域访问
+		String callback=request.getParameter("callback");
 		
-	
-	
+		if(callback==null&&"".equals(callback)) {
+				
+		response.getWriter().write(json);
+		return;
+		
+		}else {
+		response.getWriter().write(callback+"("+ json +")");
+		return;
+			
+		}
 	}
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		doGet(request, response);
 	}
+	
 	public void update(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-			//1.将请求参数封装到bean
+		//1.将请求参数封装到bean
 		Product p=new Product();
 		try {
 			BeanUtils.populate(p, request.getParameterMap());
@@ -72,10 +84,18 @@ public class ProductServlet extends HttpServlet {
 		//2.调用service完成修改操作
 		IProductService productService=new ProductServiceImpl();
 		productService.update(p);
-			
+		
+		//如果修改后，我们需要重新将数据查询，保存到redis中
+		//调用service获取所有商品信息
+		List<Product> ps = productService.findAll();
+		
+		//将ps转换成json响应到浏览器
+		String jsonValue=JSONObject.toJSONString(ps);
+		
+		RedisUtils.set("products", jsonValue);
 		}
 		
-	public void findById(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public void findById(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//1.得到产品id
 		int id=Integer.parseInt(request.getParameter("id"));
 		
@@ -102,6 +122,14 @@ public class ProductServlet extends HttpServlet {
 		//2.调用service中的方法完成添加操作
 		IProductService productService=new ProductServiceImpl(); 
 		productService.add(p);
+		
+		//调用service获取所有商品信息
+		List<Product> ps = productService.findAll();
+				
+		//将ps转换成json响应到浏览器
+		String jsonValue=JSONObject.toJSONString(ps);
+		
+		RedisUtils.set("products", jsonValue);
 	
 	}
 
